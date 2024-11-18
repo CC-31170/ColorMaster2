@@ -29,101 +29,149 @@
         app:layout_constraintTop_toBottomOf="@+id/Haibao"></LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/AnswerImage"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/white" />
+        app:srcCompat="@drawable/anwserboard" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="358dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7">
+        app:layout_constraintTop_toBottomOf="@+id/AnswerImage">
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:id="@+id/TextViewR"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="R" />
+            android:paddingTop="5dp"
+            android:text="R"
+
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <SeekBar
             android:id="@+id/seekBar1"
-            android:layout_width="256dp"
-            android:layout_height="28dp" />
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:max="255" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="0"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="358dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="1dp"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:id="@+id/TextViewB"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="G" />
+            android:paddingTop="5dp"
+            android:text="B"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <SeekBar
             android:id="@+id/seekBar2"
-            android:layout_width="256dp"
-            android:layout_height="28dp" />
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:max="255" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="0"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="358dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="1dp"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
         android:layout_marginTop="1dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:id="@+id/TextViewG"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="B" />
+            android:paddingTop="5dp"
+            android:text="G"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
         <SeekBar
-            android:id="@+id/seekBar4"
-            android:layout_width="256dp"
-            android:layout_height="28dp" />
+            android:id="@+id/seekBar3"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:max="255" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:ems="10"
+            android:inputType="text"
+            android:text="0"
+            android:textAlignment="center" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/Text3"
+        android:layout_width="54dp"
+        android:layout_height="28dp"
+        android:layout_weight="1"
+        android:text="0"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <TextView
+        android:id="@+id/Text2"
+        android:layout_width="54dp"
+        android:layout_height="28dp"
+        android:layout_weight="1"
+        android:text="0"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="613dp" />
+
+    <TextView
+        android:id="@+id/Text1"
+        android:layout_width="54dp"
+        android:layout_height="28dp"
+        android:layout_weight="1"
+        android:text="0"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="574dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
