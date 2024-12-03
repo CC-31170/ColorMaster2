@@ -3,11 +3,13 @@ package com.example.colormaster2;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
+import android.os.CountDownTimer;
 import android.widget.EditText;
 import android.text.TextWatcher;
 import androidx.core.graphics.Insets;
@@ -16,9 +18,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Level1Activity extends AppCompatActivity {
     private SeekBar seekBarR,seekBarG,seekBarB;//三个滑块
-    private ImageView imageView;//提交答案的图片
-    private TextView text1,text2,text3;//显示RGB当前数值
-
+    private ImageView answerView,questionView;//提交答案的图片
+    private TextView text1,text2,text3,count_text;//显示RGB当前数值
+    private static final long START_TIME_IN_MILLIS = 6000; // 5 seconds
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +30,12 @@ public class Level1Activity extends AppCompatActivity {
         seekBarR = findViewById(R.id.seekBar1);
         seekBarG = findViewById(R.id.seekBar2);
         seekBarB = findViewById(R.id.seekBar3);
-        imageView = findViewById(R.id.AnswerImage);
+        answerView = findViewById(R.id.AnswerImage);
+        questionView = findViewById(R.id.QuestionImage);
         text1 = findViewById(R.id.editText1);
         text2 = findViewById(R.id.editText2);
         text3 = findViewById(R.id.editText3);
-
+        count_text = findViewById(R.id.CountView);
         seekBarR.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarG.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarB.setOnSeekBarChangeListener(seekBarChangeListener);
@@ -43,8 +46,8 @@ public class Level1Activity extends AppCompatActivity {
         seekBarG.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);//进度条
         seekBarB.getThumb().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);//滑块
         seekBarB.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);//进度条
+        startTimer();
 
-        text1.addTextChangedListener(editTextChangeListener(seekBarR, text1));
     }
 
         private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -65,7 +68,7 @@ public class Level1Activity extends AppCompatActivity {
                 // 创建颜色
                 int Answer_Color = Color.rgb(red, green, blue);
                 // 设置AnswerBoard的颜色
-                imageView.setBackgroundColor(Answer_Color);
+                answerView.setBackgroundColor(Answer_Color);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
@@ -73,6 +76,22 @@ public class Level1Activity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         };
+
+    private void startTimer() {
+        CountDownTimer countDownTimer = new CountDownTimer(START_TIME_IN_MILLIS, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int secondsLeft = (int) millisUntilFinished / 1000;
+                count_text.setText("Countdown:"+ String.valueOf(secondsLeft));
+            }
+
+            @Override
+            public void onFinish() {
+                questionView.setVisibility(View.GONE); // Hide the image
+                count_text.setText("Done!"); // Optional: change text when finished
+            }
+        }.start();
+    }
 
 
 }
