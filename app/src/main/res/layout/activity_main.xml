@@ -5,33 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/imagep40"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/launchimage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imagep40" />
-
-    <Button
-        android:id="@+id/Start"
-        android:layout_width="218dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="228dp"
-        android:backgroundTint="#F6F7F9"
-        android:text="Start"
-        android:textColor="#4CAF50"
-        android:textSize="34sp"
-        app:icon="@android:drawable/ic_media_play"
-        app:iconPadding="0dp"
-        app:iconSize="34dp"
-        app:iconTint="#4CAF50"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
@@ -39,13 +14,93 @@
         android:layout_height="100dp"
 
         android:layout_marginStart="24dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="144dp"
         android:background="@drawable/rounded_background"
         android:text="ColorMaster"
         android:textAlignment="center"
         android:textColor="#F3F2EF"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/launchimage" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="360dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/Start"
+            android:layout_width="218dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F6F7F9"
+            android:text="Start"
+            android:textColor="#4CAF50"
+            android:textSize="34sp"
+            app:icon="@android:drawable/ic_media_play"
+            app:iconPadding="0dp"
+            app:iconSize="34dp"
+            app:iconTint="#4CAF50" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <Button
+            android:id="@+id/Tool"
+            android:layout_width="218dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F6F7F9"
+            android:text="Toolbox"
+            android:textColor="#4CAF50"
+            android:textSize="34sp"
+            app:icon="@android:drawable/ic_menu_manage"
+            app:iconPadding="0dp"
+            app:iconSize="34dp"
+            app:iconTint="#4CAF50" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <Button
+            android:id="@+id/History"
+            android:layout_width="218dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F6F7F9"
+            android:text="History"
+            android:textColor="#4CAF50"
+            android:textSize="34sp"
+            app:icon="@android:drawable/ic_menu_recent_history"
+            app:iconPadding="0dp"
+            app:iconSize="34dp"
+            app:iconTint="#4CAF50" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="354dp"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="55dp"
+            android:layout_height="56dp"
+            android:tint="#4CAF50"
+            android:background="#F6F7F9"
+            app:srcCompat="@drawable/info" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
