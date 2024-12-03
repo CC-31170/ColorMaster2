@@ -2,8 +2,12 @@ package com.example.colormaster2;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.content.Intent;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.animation.ObjectAnimator;
@@ -16,7 +20,9 @@ import androidx.core.view.WindowInsetsCompat;
 public class SettlementActivity extends AppCompatActivity {
 
     private TextView resultView;
+    private ImageView color_board;
     private ProgressBar progressBar;
+    private ImageButton retryBtn,homeBtn,saveBtn;
     double similarity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +31,40 @@ public class SettlementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settlement);
 
         resultView = findViewById(R.id.ResultView);
+        color_board = findViewById(R.id.color_board);
         progressBar = findViewById(R.id.progressBar);
+        retryBtn = findViewById(R.id.RetryBtn);
+        homeBtn = findViewById(R.id.HomeBtn);
+        saveBtn = findViewById(R.id.SaveBtn);
         Intent intent = getIntent();
         if (intent != null) {
             int answerRed = intent.getIntExtra("ANSWER_RED", 0); // 默认值0
             int answerGreen = intent.getIntExtra("ANSWER_GREEN", 0); // 默认值0
             int answerBlue = intent.getIntExtra("ANSWER_BLUE",0);
-
+            int answerColor = intent.getIntExtra("ANSWER_COLOR",0);
             // 计算颜色相似度
             similarity = calculateColorSimilarity(answerRed, answerGreen, answerBlue,27,169,228);
-
             // 输出或显示相似度结果
-//            resultView.setText("similarity = " + similarity);
+            color_board.setColorFilter(answerColor);
+
             // 更新UI以展示相似度结果
             animateProgress();
         }
+
+        retryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_settle = new Intent(SettlementActivity.this,MainActivity.class);
+                startActivity(intent_settle);
+            }
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

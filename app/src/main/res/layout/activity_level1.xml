@@ -26,9 +26,10 @@
         android:id="@+id/linearLayout"
         android:layout_width="356dp"
         android:layout_height="60dp"
+        android:layout_marginTop="270dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/QuestionImage">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/CountView"
@@ -153,10 +154,10 @@
 
     <Button
         android:id="@+id/SubmitBtn"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="12dp"
         android:alpha="0.4"
         android:backgroundTint="#000000"
         android:text="Submit"
@@ -200,28 +201,45 @@
             android:textSize="24sp" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_popup_sync"
-        android:background="@null"
-        app:tint="#424242" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="32dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="?attr/actionModeCopyDrawable"
-        app:tint="#424242" />
+    <LinearLayout
+        android:layout_width="357dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="650dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/ResetBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:tint="#A12B06"
+            app:srcCompat="@drawable/loop" />
+
+        <ImageButton
+            android:id="@+id/LoadBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:tint="#06780B"
+            app:srcCompat="@drawable/download" />
+
+        <ImageButton
+            android:id="@+id/CopyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:tint="#0A1B7B"
+            app:srcCompat="@drawable/copy" />
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

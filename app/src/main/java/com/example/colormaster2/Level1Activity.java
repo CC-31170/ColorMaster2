@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,8 @@ public class Level1Activity extends AppCompatActivity {
     private TextView text1,text2,text3,count_text;//显示RGB当前数值
     private static final long START_TIME_IN_MILLIS = 4000; // 5 seconds
     private Button submitBtn;
+    private ImageButton resetBtn,loadBtn,copyBtn;
+    private boolean isTimerRunning = false;
     int Answer_Red,Answer_Green,Answer_Blue,Answer_Color;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class Level1Activity extends AppCompatActivity {
         text3 = findViewById(R.id.editText3);
         count_text = findViewById(R.id.CountView);
         submitBtn = findViewById(R.id.SubmitBtn);
+        resetBtn = findViewById(R.id.ResetBtn);
+        loadBtn = findViewById(R.id.LoadBtn);
+        copyBtn = findViewById(R.id.CopyBtn);
         seekBarR.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarG.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarB.setOnSeekBarChangeListener(seekBarChangeListener);
@@ -52,6 +58,19 @@ public class Level1Activity extends AppCompatActivity {
         seekBarB.getThumb().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);//滑块
         seekBarB.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);//进度条
         startTimer();
+
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    seekBarR.setProgress(0);
+                    seekBarG.setProgress(0);
+                    seekBarB.setProgress(0);
+                    startTimer();
+
+
+            }
+        });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +110,8 @@ public class Level1Activity extends AppCompatActivity {
     };
 
     private void startTimer() {
+        questionView.setVisibility(View.VISIBLE);
+        
         CountDownTimer countDownTimer = new CountDownTimer(START_TIME_IN_MILLIS, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -104,6 +125,7 @@ public class Level1Activity extends AppCompatActivity {
                 count_text.setText("Done!"); // Optional: change text when finished
             }
         }.start();
+
     }
     //转移颜色数值到结算页面
     private void moveToSettlementActivity() {
@@ -111,6 +133,7 @@ public class Level1Activity extends AppCompatActivity {
         intent.putExtra("ANSWER_RED", Answer_Red);
         intent.putExtra("ANSWER_GREEN", Answer_Green);
         intent.putExtra("ANSWER_BLUE", Answer_Blue);
+        intent.putExtra("ANSWER_COLOR", Answer_Color);
 
         startActivity(intent);
     }

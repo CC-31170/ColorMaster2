@@ -39,7 +39,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:backgroundTint="#F6F7F9"
-            android:text="Start"
+            android:text="Play"
             android:textColor="#4CAF50"
             android:textSize="34sp"
             app:icon="@android:drawable/ic_media_play"

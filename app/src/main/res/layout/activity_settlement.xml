@@ -67,7 +67,7 @@
             app:srcCompat="@drawable/haibao" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/color_board"
             android:layout_width="152dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/RetryBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_weight="1"
@@ -92,7 +92,7 @@
             app:srcCompat="@drawable/spinner" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/HomeBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_weight="1"
@@ -101,7 +101,7 @@
             app:srcCompat="@drawable/home" />
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/SaveBtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_weight="1"
