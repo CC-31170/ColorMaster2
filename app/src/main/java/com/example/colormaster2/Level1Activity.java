@@ -1,9 +1,11 @@
 package com.example.colormaster2;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import androidx.activity.EdgeToEdge;
@@ -20,7 +22,9 @@ public class Level1Activity extends AppCompatActivity {
     private SeekBar seekBarR,seekBarG,seekBarB;//三个滑块
     private ImageView answerView,questionView;//提交答案的图片
     private TextView text1,text2,text3,count_text;//显示RGB当前数值
-    private static final long START_TIME_IN_MILLIS = 6000; // 5 seconds
+    private static final long START_TIME_IN_MILLIS = 4000; // 5 seconds
+    private Button submitBtn;
+    int Answer_Red,Answer_Green,Answer_Blue,Answer_Color;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class Level1Activity extends AppCompatActivity {
         text2 = findViewById(R.id.editText2);
         text3 = findViewById(R.id.editText3);
         count_text = findViewById(R.id.CountView);
+        submitBtn = findViewById(R.id.SubmitBtn);
         seekBarR.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarG.setOnSeekBarChangeListener(seekBarChangeListener);
         seekBarB.setOnSeekBarChangeListener(seekBarChangeListener);
@@ -48,34 +53,42 @@ public class Level1Activity extends AppCompatActivity {
         seekBarB.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_ATOP);//进度条
         startTimer();
 
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToSettlementActivity();
+            }
+        });
+
+
     }
 
-        private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // 获取当前的RGB值
-                if (seekBar == seekBarR) {
-                    text1.setText(String.valueOf(progress));
-                } else if (seekBar == seekBarG) {
-                    text2.setText(String.valueOf(progress));
-                } else if (seekBar == seekBarB) {
-                    text3.setText(String.valueOf(progress));
-                }
-                int red = seekBarR.getProgress();
-                int green = seekBarG.getProgress();
-                int blue = seekBarB.getProgress();
-
-                // 创建颜色
-                int Answer_Color = Color.rgb(red, green, blue);
-                // 设置AnswerBoard的颜色
-                answerView.setBackgroundColor(Answer_Color);
+    private final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // 获取当前的RGB值
+            if (seekBar == seekBarR) {
+                text1.setText(String.valueOf(progress));
+            } else if (seekBar == seekBarG) {
+                text2.setText(String.valueOf(progress));
+            } else if (seekBar == seekBarB) {
+                text3.setText(String.valueOf(progress));
             }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            Answer_Red = seekBarR.getProgress();
+            Answer_Green = seekBarG.getProgress();
+            Answer_Blue = seekBarB.getProgress();
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        };
+            // 创建颜色
+            Answer_Color = Color.rgb(Answer_Red, Answer_Green, Answer_Blue);
+            // 设置AnswerBoard的颜色
+            answerView.setBackgroundColor(Answer_Color);
+        }
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {}
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {}
+    };
 
     private void startTimer() {
         CountDownTimer countDownTimer = new CountDownTimer(START_TIME_IN_MILLIS, 1000) {
@@ -91,6 +104,15 @@ public class Level1Activity extends AppCompatActivity {
                 count_text.setText("Done!"); // Optional: change text when finished
             }
         }.start();
+    }
+    //转移颜色数值到结算页面
+    private void moveToSettlementActivity() {
+        Intent intent = new Intent(Level1Activity.this, SettlementActivity.class);
+        intent.putExtra("ANSWER_RED", Answer_Red);
+        intent.putExtra("ANSWER_GREEN", Answer_Green);
+        intent.putExtra("ANSWER_BLUE", Answer_Blue);
+
+        startActivity(intent);
     }
 
 
