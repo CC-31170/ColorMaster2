@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_0"
     tools:context=".Level1Activity">
+
 
     <ImageView
         android:id="@+id/QuestionImage"
@@ -184,6 +186,7 @@
         <ImageView
             android:id="@+id/AnswerImage"
             android:layout_width="141dp"
+            android:background="#FFFFFF"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/anwserboard" />
 
@@ -196,5 +199,29 @@
             android:backgroundTint="#000000"
             android:textSize="24sp" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_popup_sync"
+        android:background="@null"
+        app:tint="#424242" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="32dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="?attr/actionModeCopyDrawable"
+        app:tint="#424242" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/level"
     tools:context=".SettlementActivity">
 
     <Button
@@ -31,6 +32,7 @@
             android:layout_height="46dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="#0C0B0B"
             android:textSize="24sp" />
 
         <ProgressBar
