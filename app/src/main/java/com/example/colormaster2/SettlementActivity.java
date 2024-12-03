@@ -1,9 +1,12 @@
 package com.example.colormaster2;
 
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.content.Intent;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
+import android.animation.ObjectAnimator;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -13,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class SettlementActivity extends AppCompatActivity {
 
     private TextView resultView;
+    private ProgressBar progressBar;
+    double similarity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,7 @@ public class SettlementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settlement);
 
         resultView = findViewById(R.id.ResultView);
+        progressBar = findViewById(R.id.progressBar);
         Intent intent = getIntent();
         if (intent != null) {
             int answerRed = intent.getIntExtra("ANSWER_RED", 0); // 默认值0
@@ -27,11 +33,12 @@ public class SettlementActivity extends AppCompatActivity {
             int answerBlue = intent.getIntExtra("ANSWER_BLUE",0);
 
             // 计算颜色相似度
-            double similarity = calculateColorSimilarity(answerRed, answerGreen, answerBlue,27,169,228);
+            similarity = calculateColorSimilarity(answerRed, answerGreen, answerBlue,27,169,228);
 
             // 输出或显示相似度结果
-            resultView.setText("similarity = " + similarity);
+//            resultView.setText("similarity = " + similarity);
             // 更新UI以展示相似度结果
+            animateProgress();
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -49,4 +56,21 @@ public class SettlementActivity extends AppCompatActivity {
         return similarityPercentage;
 
     }
+
+    private void animateProgress() {
+        ObjectAnimator animator = ObjectAnimator.ofInt(progressBar, "progress", 0, (int) similarity);
+        animator.setDuration(2000); // 动画持续时间2秒
+        animator.setInterpolator(new AccelerateDecelerateInterpolator()); // 先加速后减速
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int progress = (Integer) animation.getAnimatedValue();
+                resultView.setText(progress + "%");
+            }
+        });
+
+        animator.start();
+    }
+
 }
