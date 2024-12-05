@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/InfoBtn"
             android:layout_width="55dp"
             android:layout_height="56dp"
             android:tint="#4CAF50"
